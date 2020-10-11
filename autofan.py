@@ -13,6 +13,7 @@ except:
 	os.system('pip install requests')
 import websocket
 import traceback
+import _thread as thread
 try:
 	from fake_useragent import UserAgent
 except:
@@ -23,6 +24,7 @@ import random
 import uuid
 import platform
 from concurrent.futures import ThreadPoolExecutor, as_completed
+import threading
 
 counter = 0
 penghitung=0
@@ -371,8 +373,8 @@ if __name__ == "__main__":
 	
 	try:
 		#saring
-		if os.path.exists('000aktivasi.johnson') == True:
-			namaaktivasi='000aktivasi.johnson'
+		if os.path.exists('../af2/000aktivasi.johnson') == True:
+			namaaktivasi='../af2/000aktivasi.johnson'
 		else:
 			namaaktivasi='000aktivasi.johnson'
 		
@@ -665,9 +667,10 @@ CP : 085155415154
 			
 			
 			reqtemp = requests.get('https://id-api.spooncast.net/items/template/',headers=headers2)
+			print(reqtemp.json())
 			
 		
-			websocket.enableTrace(False)
+			websocket.enableTrace(True)
 			ws = websocket.WebSocketApp("wss://id-heimdallr.spooncast.net/"+slink,on_message = on_message,on_error = on_error,on_close = on_close,header={'User-Agent':'Mozilla/5.0'})
 			ws.on_open = on_open
 			ws.run_forever()
