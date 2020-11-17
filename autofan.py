@@ -373,8 +373,8 @@ if __name__ == "__main__":
 	
 	try:
 		#saring
-		if os.path.exists('../af2/000aktivasi.johnson') == True:
-			namaaktivasi='../af2/000aktivasi.johnson'
+		if os.path.exists('../af4/000aktivasi.johnson') == True:
+			namaaktivasi='../af4/000aktivasi.johnson'
 		else:
 			namaaktivasi='000aktivasi.johnson'
 		
@@ -382,9 +382,9 @@ if __name__ == "__main__":
 		print("sedang mengecek ...")
 		print("sedang memuat ...")
 		print("pastikan internet aman ...")
-		req = requests.get('https://diveot.site/spoon/fan.fan').text
+		req = requests.get('http://keple.site/spoon/fan.fan').text
 		
-		act = requests.get('https://diveot.site/spoon/kodepublik')
+		act = requests.get('http://keple.site/spoon/kodepublik')
 		print(act)
 		active = act.json()['kode']
 		#active = requests.get('https://diveot.site/spoon/kodecat').json()['kode']
