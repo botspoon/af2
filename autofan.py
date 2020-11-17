@@ -373,8 +373,8 @@ if __name__ == "__main__":
 	
 	try:
 		#saring
-		if os.path.exists('../ppp/000aktivasi.johnson') == True:
-			namaaktivasi='../ppp/000aktivasi.johnson'
+		if os.path.exists('../af4/000aktivasi.johnson') == True:
+			namaaktivasi='../af4/000aktivasi.johnson'
 		else:
 			namaaktivasi='000aktivasi.johnson'
 		
