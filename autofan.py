@@ -365,183 +365,7 @@ def on_open(ws):
 nurut = False
 usertoken = ''
 if __name__ == "__main__":
-	
-	
-	
-	
-	
-	
-	try:
-		#saring
-		if os.path.exists('../af4/000aktivasi.johnson') == True:
-			namaaktivasi='../af4/000aktivasi.johnson'
-		else:
-			namaaktivasi='000aktivasi.johnson'
-		
-		kode=0
-		print("sedang mengecek ...")
-		print("sedang memuat ...")
-		print("pastikan internet aman ...")
-		req = requests.get('http://keple.site/spoon/fan.fan').text
-		
-		act = requests.get('http://keple.site/spoon/kodepublik')
-		print(act)
-		active = act.json()['kode']
-		#active = requests.get('https://diveot.site/spoon/kodecat').json()['kode']
-		
-		imei = act.json()['imei']
-		#imei = requests.get('https://diveot.site/spoon/imei').json()['imei']
-		perangkat = act.json()['perangkat']
-		ver = act.json()['versi']
-		os.system('clear')
-		print("sedang memuat ...")
-		if req != "A":
-			try:
-				print(req)
-			except:
-				print("SCRIPT DIMATIKAN")
-			exit()
-	
-		
-		#pess = requests.get('https://diveot.site/spoon/pesan.txt').text
-		#pesse = requests.get('https://diveot.site/spoon/ucingmessage.json')
-		#pesen = pesse.json()
-		
-		
-		#print(pess)
-		#time.sleep(10)
-		
-		#aktivasi = zz.json()['kode']
-		
-		#print(aktivasi)
-		#cur_path = os.path.dirname(__file__)
-		#new_path = os.path.relpath('..\\subfldr1\\testfile.txt', cur_path)
-		#with open(new_path, 'w') as f:
-			#f.write(data)
-	
-		
-		
-		
-		#proses aktivasi
-		with open(namaaktivasi, "r") as jsonFile:
-			aktivasi = json.load(jsonFile)
-		
-		
-		if aktivasi['kode'] not in active:
-			if aktivasi['kode']==0:
-				
-				while(aktivasi['nama']==""):
-					print('nama tidak boleh kosong')
-					aktivasi['nama']=input('Masukkan nama sesuai yang diperintahkan : ')
-					if aktivasi['nama']!="":
-						with open(namaaktivasi, "w") as jsonFile:
-							json.dump(aktivasi, jsonFile)
-				
-				abc=random.randint(100000,999999)
-				aktivasi['kode']=abc
-				
-				with open(namaaktivasi, "w") as jsonFile:
-					json.dump(aktivasi, jsonFile)
-				
-				activation(str(datetime.now())[:19]+'\n-'+str(aktivasi['nama'])+'\n-'+str(aktivasi['kode'])+'\n-'+str(uuid.uuid1())[24:]+'\n-'+str(platform.platform())+'\n'+platform.version()[15:])
-				activation('\['+str(aktivasi['kode'])+',')
-				activation('\["'+str(uuid.uuid1())[24:]+'",')
-				print('silahkan tunggu aktivasi ya akak '+aktivasi['nama'])
-				print('KODE ANDA : '+str(aktivasi['kode']))
-				print('\n\nPERINGATAN !!!')
-				print('BACA ATAU TIDAK BACA DIANGGAP SUDAH BACA')
-				print('JANGAN SEBAR KODE INI KESIAPAPUN')
-				print('KECUALI PENJUAL')
-				print('MELANGGAR PERATURAN INI DAPAT MENGAKIBATKAN PEMATIAN KODE')
-				print('silahkan tunggu aktivasi ya akak '+aktivasi['nama'])
-				
-				
-				exit()
-				
-				
-				
-			else:
-				while(aktivasi['nama']==""):
-					print('nama tidak boleh kosong')
-					aktivasi['nama']=input('Masukkan nama sesuai yang diperintahkan : ')
-					if aktivasi['nama']!="":
-						with open(namaaktivasi, "w") as jsonFile:
-							json.dump(aktivasi, jsonFile)
-					
-				activation(str(datetime.now())[:19]+'\n-'+str(aktivasi['nama'])+'\n-'+str(aktivasi['kode'])+'\n-'+str(uuid.uuid1())[24:]+'\n-'+str(platform.platform())+'\n'+platform.version()[15:])
-				activation('\['+str(aktivasi['kode'])+',')
-				activation('\["'+str(uuid.uuid1())[24:]+'",')
-				print('silahkan tunggu aktivasi ya akak '+aktivasi['nama'])
-				print('KODE ANDA : '+str(aktivasi['kode']))
-				print('\n\nPERINGATAN !!!')
-				print('BACA ATAU TIDAK BACA DIANGGAP SUDAH BACA')
-				print('JANGAN SEBAR KODE INI KESIAPAPUN')
-				print('KECUALI PENJUAL')
-				print('MELANGGAR PERATURAN INI DAPAT MENGAKIBATKAN PEMATIAN KODE')
-				print('silahkan tunggu aktivasi ya akak '+aktivasi['nama'])
-				
-				
-				exit()
-		
-		else:
-			print('KODE sudah aktif')
-			time.sleep(.3)
-		
-		
-		if str(uuid.uuid1())[24:] not in imei:
-			
-			if str(platform.platform()).translate({ord(i): None for i in '-+ .'}) in perangkat:
-				
-				if str(platform.version())[15:] in ver:
-					pass
-				
-				else:
-					print('Perangkat ini di ban oleh mimin')
-					activation('Aktivitas Illegal \nFUN versi\n'+str(datetime.now())[:19]+'\n'+str(aktivasi['kode'])+'\n'+str(aktivasi['nama'])+'\n'+str(uuid.uuid1())[24:]+'\n'+platform.platform())
-					activation('\["'+str(platform.version())[15:]+'",')
-					exit()
-					
-				
-				
-			else:
-				
-				#print(str(platform.platform()).translate({ord(i): None for i in '-+ .'}))
-				#print(perangkat)
-				print('Perangkat ini di ban oleh mimin')
-				activation('Aktivitas Illegal \nFUN platform\n'+str(datetime.now())[:19]+'\n'+str(aktivasi['kode'])+'\n'+str(aktivasi['nama'])+'\n'+str(uuid.uuid1())[24:]+'\n'+platform.platform())
-				activation('\["'+str(platform.platform()).translate({ord(i): None for i in '-+ .'})+'",')
-				activation('\["'+str(platform.version())[15:]+'",')
-				exit()
-			
-			
-			
-		
-		
-		
-		#pw = zz.json()['password']
-		#print(pw)
-		#pww = input("masukkan password: ")
-		#while pww != pw:
-			#print("password salah")
-		#	exit()
-		print("SELAMAT DATANG")
-		tele(str(datetime.now())[:19]+'\n-'+aktivasi['nama']+' '+str(aktivasi['kode'])+' FUN \n-'+str(uuid.uuid1())[24:]+'\n-'+str(platform.platform())+'')
-		os.system('clear')
-		print("enjoy")
-		
-	except:
-		print(traceback.format_exc())
-		exit()
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 
 	e="ini error"
@@ -618,19 +442,19 @@ if __name__ == "__main__":
 					print('_________________________________________________')
 			print("""
 MENU
-0. Ganti id
-1. Unfollow semua following sampai 0 
-2. Parkun di room rame + autofollowing + fanboard + autochat ngemis fan
-3. Ganti akun
-4. reset blacklist (fungsi blacklist adalah agar tidak spam ke fanboard orang lebih dari 1x)
-5. hapus bersih fanboard
-6. unfan semua yang gak fan back
-7. fancepet
+0. \tGanti id
+1. \tUnfollow semua following sampai 0  (mode cepat)
+2. \tParkun di room rame + autofollowing + fanboard + autochat ngemis fan
+3. \tGanti akun
+4. \treset blacklist (fungsi blacklist adalah agar tidak spam ke fanboard orang lebih dari 1x)
+5. \thapus bersih fanboard (mode cepat)
+6. \tunfan semua yang gak fan back (mode cepat)
 
 
 
 SCRIPT GW GA ABAL2
 GAK DIPASANGIN PHISING
+(KALAU DAPATNYA DARI NOMOR DIBAWAH INI)
 CP : 085155415154
 	""")
 		
