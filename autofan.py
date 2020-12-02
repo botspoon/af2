@@ -218,7 +218,7 @@ def folcepet(idkickers):
 
 def unfolcepet(idkickers):
 	response = requests.post('https://id-api.spooncast.net/users/'+idkickers+'/unfollow/',headers=headers2,)
-	#print(response.json())
+	print(response.json())
 	print(idkickers+" berhasil diunfollow")
 	
 def delfb(idkickers):
@@ -352,7 +352,7 @@ def on_open(ws):
 		ws.send(pesan) 
 		
 		refresher()
-		autochat()
+		#autochat()
 		infoer()
 		print(slink)
 		print(userid)
