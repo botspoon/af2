@@ -69,7 +69,7 @@ def unfantozero():
 		nexts=link1
 		for i in range(0,len(response6.json()['results'])):
 			idd2.append(str(response6.json()['results'][int(i)]['id']))
-			thread.start_new_thread(unfolcepet, (str(response6.json()['results'][int(i)]['id']),))
+			unfolcepet(str(response6.json()['results'][int(i)]['id']))
 			z+=1
 			print(z)
 	print("debug")
@@ -136,8 +136,10 @@ def unfanback():
 			uid=str(response6.json()['results'][int(i)]['id'])
 			responsel = requests.get('https://id-api.spooncast.net/users/'+uid+'/',headers=headers2)
 			kode = responsel.json()['results'][0]['follow_status']
+			
+			
 			if kode==1:
-				thread.start_new_thread(unfolcepet, (str(response6.json()['results'][int(i)]['id']),))
+				unfolcepet(str(response6.json()['results'][int(i)]['id']))
 				z+=1
 				print(z)
 				print('ada dongs')
@@ -210,6 +212,23 @@ def fancepet():
 
 def folcepet(idkickers):
 	response = requests.post('https://id-api.spooncast.net/users/'+idkickers+'/follow/',headers=headers2,)
+	
+	try:
+		statuskode = int(response.json()['status_code'])
+				
+	except:
+		print(traceback.format_exc())
+		print(response.json())
+	if statuskode == 429:
+				print('istirahat 10 detik')
+				
+				
+				
+				for x in range(10):
+					cy = 10 - x
+					print('lanjut setelah '+str(cy)+' detik')
+					time.sleep(1)
+	
 	print(response.json())
 	print(idkickers+" berhasil follow")
 	fanb={"contents":random.choice(listfb)}
@@ -218,6 +237,24 @@ def folcepet(idkickers):
 
 def unfolcepet(idkickers):
 	response = requests.post('https://id-api.spooncast.net/users/'+idkickers+'/unfollow/',headers=headers2,)
+	
+	try:
+				statuskode = int(response.json()['status_code'])
+				
+	except:
+				print(traceback.format_exc())
+				print(response.json())
+			
+	if statuskode == 429:
+				print('istirahat 10 detik')
+				
+				
+				
+				for x in range(10):
+					cy = 10 - x
+					print('lanjut setelah '+str(cy)+' detik')
+					time.sleep(1)
+	
 	print(response.json())
 	print(idkickers+" berhasil diunfollow")
 	
@@ -285,10 +322,10 @@ def getlives(slink):
 	response = requests.get('https://id-api.spooncast.net/lives/'+slink,headers=headers2).json()
 	return response
 	
-
+#pastikan formatnya sama
+#kalau beda pasti error
 listfb=[
-'Fanback ya kak makasih',
-'aku baru nih kak , fanback ya',
+'ini kata-kata baru , tes',
 'fanback kak , jangan pelit :p',
 'fanback ya kak',
 'fanback kak , kakak cakep deh',
@@ -408,7 +445,7 @@ if __name__ == "__main__":
 		nomer = config['nomor']
 		password = config['password']
 	
-		infoer()
+		
 		print("nomor sekarang "+nomer)
 		print("password sekarang "+password)
 		print("otw login ...")
@@ -459,6 +496,7 @@ CP : 085155415154
 	""")
 		
 		pil = int(input("masukkan pilihan anda : "))
+		infoer()
 		if pil == 1:
 			unfantozero()
 			
